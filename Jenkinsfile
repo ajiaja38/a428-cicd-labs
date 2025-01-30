@@ -16,12 +16,11 @@ pipeline {
         sh './jenkins/scripts/test.sh' 
       }
     }
-    stage('Deploy') { 
+    stage('Deploy 🚀') { 
       steps {
         sh '''
           npm run build
-          npm install -g serve
-          serve -s build -l 3002 &
+          npx serve -s build -l 3002 &
         '''
         echo 'Visit http://103.175.217.164:3002 to see your React app in action.'
         // sh './jenkins/scripts/deliver.sh' 
