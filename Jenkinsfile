@@ -18,9 +18,15 @@ pipeline {
     }
     stage('Deploy') { 
       steps {
-        sh './jenkins/scripts/deliver.sh' 
-        input message: 'Sudah selesai menggunakan React App? (Klik "Proceed" untuk mengakhiri)' 
-        sh './jenkins/scripts/kill.sh' 
+        sh '''
+          npm run build
+          npm install -g serve
+          serve -s build -l 3002 &
+        '''
+        echo 'Visit http://103.175.217.164:3002 to see your React app in action.'
+        // sh './jenkins/scripts/deliver.sh' 
+        // input message: 'Sudah selesai menggunakan React App? (Klik "Proceed" untuk mengakhiri)' 
+        // sh './jenkins/scripts/kill.sh' 
       }
     }
   }
