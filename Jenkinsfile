@@ -22,7 +22,7 @@ pipeline {
           npm run build
           npx serve -s build -l 3000 &
           sleep 5
-          sudo rm -rf ./node_modules
+          rm -rf ./node_modules
           echo "http://103.175.217.164:3000"
         '''
         // sh './jenkins/scripts/deliver.sh' 
